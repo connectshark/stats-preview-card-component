@@ -1,10 +1,11 @@
 :root {
   --primary-dark-blue: hsl(233, 47%, 7%);
   --primary-desaturated-blue: hsl(244, 38%, 16%);
-  --primary-soft-violet: hsl(277, 64%, 61%);
-  --neutral--white: hsla(0, 0%, 100%, 0.75);
-  --neutral-slightly-main-white: hsla(0, 0%, 100%, 0.6);
+  --primary-soft-violet: #aa5cdb;
+  --neutral--white: hsl(0, 0%, 100%);
+  --neutral-slightly-main-white: hsla(0, 0%, 100%, 0.75);
   --neutral-slightly-stat-white: hsla(0, 0%, 100%, 0.6);
+  --deca-font: 'Lexend Deca', sans-serif;
 }
 
 * {
@@ -12,25 +13,115 @@
   padding: 0;
   list-style: none;
 }
+img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.destop-show {
+  display: none;
+}
 
 html {
   font-size: 15px;
-  font-family: 'Inter','Lexend Deca', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
   min-height: 100svh;
   background-color: var(--primary-dark-blue);
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .preview-card {
-  width: 90%;
+  width: 350px;
   margin: auto;
   background-color: var(--primary-desaturated-blue);
+  border-radius: 1rem;
+  overflow: hidden;
 }
 .hero-img {
+  position: relative;
 }
-.hero-img img {
+.hero-img::before {
+  position: absolute;
+  content: '';
   width: 100%;
-  vertical-align: middle;
+  height: 100%;
+  background-color: var(--primary-soft-violet);
+  opacity: .6;
+}
+.content {
+  width: 85%;
+  margin: auto;
+  text-align: center;
+  padding: 3rem 0;
+  box-sizing: border-box;
+}
+
+.content h1 {
+  font-size: 2rem;
+  color: var(--neutral--white);
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+.highlight {
+  color: var(--primary-soft-violet);
+}
+
+.describe {
+  color: var(--neutral-slightly-stat-white);
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+.special-item:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.special-item h2 {
+  color: var(--neutral-slightly-main-white);
+  line-height: 2;
+}
+.special-item p {
+  color: var(--neutral-slightly-stat-white);
+  text-transform: uppercase;
+  font-family: var(--deca-font);
+  letter-spacing: 1px;
+}
+
+@media screen and (min-width: 1440px) {
+  body {
+    display: flex;
+  }
+  .destop-show{
+    display: inline-block;
+  }
+  .mobile-show {
+    display: none;
+  }
+  .preview-card {
+    width: 1000px;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    align-items: center;
+  }
+  .content, .hero-img {
+    width: 50%;
+  }
+  .content {
+    text-align: left;
+    padding: 4rem;
+  }
+  .describe {
+    margin-bottom: 4rem;
+  }
+  .special-list {
+    margin-top: auto;
+    display: flex;
+    gap: 3rem;
+  }
+  .special-item:not(:last-child) {
+    margin-bottom: 0;
+  }
 }
